@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    </head>
+    <style>
+        * {box-sizing: border-box}
+        body {font-family: 'Poppins', sans-serif; margin:0}
+        .mySlides {display: none}
+        img {vertical-align: middle;}
+        
+        /* Slideshow container */
+        .slideshow-container {
+          max-width: 1000px;
+          position: relative;
+          top: -4vh;
+          right: 42vh;
+          margin: auto;
+        }
+        
+        /* Next & previous buttons */
+        .prev, .next {
+          cursor: pointer;
+          position: absolute;
+          top: 50%;
+          width: auto;
+          padding: 16px;
+          margin-top: -22px;
+          color: white;
+          font-weight: bold;
+          font-size: 18px;
+          transition: 0.6s ease;
+          border-radius: 0 3px 3px 0;
+          user-select: none;
+        }
+        
+        /* Position the "next button" to the right */
+        .next {
+          right: 0;
+          border-radius: 3px 0 0 3px;
+        }
+        
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: #37639c;
+        }
+        
+        /* Caption text */
+        .text {
+          color: #f2f2f2;
+          font-size: 15px;
+          padding: 8px 12px;
+          position: absolute;
+          width: 100%;
+          text-align: center;
+          font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Number text (1/3 etc) */
+        .numbertext {
+          color: #f2f2f2;
+          font-size: 12px;
+          padding: 8px 12px;
+          position: absolute;
+          font-family: 'Poppins', sans-serif;
+          top: 0;
+        }
+        
+        /* The dots/bullets/indicators */
+        .dot {
+          position: relative;
+          cursor: pointer;
+          height: 15px;
+          right: 40vh;
+          top: -3vh;
+          width: 15px;
+          border-style: solid;
+          border-color: white;
+          border-radius: 50%;
+          display: inline-block;
+          transition: background-color 0.6s ease;
+        }
+        
+        .active, .dot:hover {
+          background-color: #37639c;
+        }
+        
+        /* Fading animation */
+        .fade {
+          animation-name: fade;
+          animation-duration: 1.5s;
+        }
+        
+        @keyframes fade {
+          from {opacity: .4} 
+          to {opacity: 1}
+        }
+        
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+          .prev, .next,.text {font-size: 11px}
+        }
+
+        @keyframes loading {
+            0% { content: "Ładowanie obiektów"; }
+            33% { content: "Ładowanie obiektów ."; }
+            66% { content: "Ładowanie obiektów .."; }
+            100% { content: "Ładowanie obiektów ..."; }
+        }
+
+        #title {
+            position: relative;
+        }
+
+        #title::before {
+            content: "";
+            display: inline-block;
+            animation: loading 3s infinite;
+        }
+        </style>
+    <body>
+        <div id="overlay">
+            <h1 id="title"></h1>
+            </div>
+            <div class="slideshow-container">
+            <div class="loader"></div>
+                <div class="mySlides fade">
+                  <img src="https://media.discordapp.net/attachments/1071937388181463060/1189349725552517120/image.png?ex=659dd73f&is=658b623f&hm=c08ae0a8f7fb56398a3ee449bd54f29b01b2706c8d18680d600d066aafc9812b&=&format=webp&quality=lossless" style="width:100%">
+                  <div class="text">TEST dsad asd sad asd d sad asdas dsa dsad ssadas das  dsad asdas das dasd ad sa dsa <br> dsad asd asd asd sad sad sadas dasd sad sad asd s d asd sad asd <br> dsad asd sad asd sad sad sa</div>
+                </div>
+                
+                <div class="mySlides fade">
+                  <img src="https://media.discordapp.net/attachments/1071937388181463060/1189349725552517120/image.png?ex=659dd73f&is=658b623f&hm=c08ae0a8f7fb56398a3ee449bd54f29b01b2706c8d18680d600d066aafc9812b&=&format=webp&quality=lossless" style="width:100%">
+                  <div class="text">Caption Two</div>
+                </div>
+                
+                <div class="mySlides fade">
+                  <img src="https://media.discordapp.net/attachments/1071937388181463060/1189349725552517120/image.png?ex=659dd73f&is=658b623f&hm=c08ae0a8f7fb56398a3ee449bd54f29b01b2706c8d18680d600d066aafc9812b&=&format=webp&quality=lossless" style="width:100%">
+                  <div class="text">Caption Three</div>
+                </div>
+                
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+                
+                </div>
+                <br>
+                
+                <div style="text-align:center">
+                  <span class="dot" onclick="currentSlide(1)"></span> 
+                  <span class="dot" onclick="currentSlide(2)"></span> 
+                  <span class="dot" onclick="currentSlide(3)"></span> 
+                </div>
+        <script>
+            let slideIndex = 1;
+            showSlides(slideIndex);
+            
+            function plusSlides(n) {
+              showSlides(slideIndex += n);
+            }
+            
+            function currentSlide(n) {
+              showSlides(slideIndex = n);
+            }
+            
+            function showSlides(n) {
+              let i;
+              let slides = document.getElementsByClassName("mySlides");
+              let dots = document.getElementsByClassName("dot");
+              if (n > slides.length) {slideIndex = 1}    
+              if (n < 1) {slideIndex = slides.length}
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";  
+              dots[slideIndex-1].className += " active";
+            }
+            </script>
+        <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
+        <script src="js/listener.js" type="text/javascript"></script>
+    </body>
+</html>
